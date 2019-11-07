@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Clases </title>
+</head>
+
+<body>
+
+    <div id="app" class="container mt-5">
+        <!-- 
+            Para que las clases funcionen con vue, se necesita que vayan en comillas simples
+            Si se va incluir mas de una clase lo que se tiene que realizar es colocar todo en un array y en
+            comillas simples pasar cada una de las clases,
+            cuando tenemos las clases definidas en la data del vuejs solo se llama la variable o la propiedad sin comillas simples
+        -->
+        <div :class="['p-3','text-white', fondo]">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium soluta labore nobis odio natus a
+            dolorem. Minus voluptate dolorum error quisquam dignissimos perferendis, ipsa, ipsam sapiente unde repellat
+            corporis nulla.
+        </div>
+        <select v-model="fondo">
+            <!-- el v-model enlaza al dato que tenemos en vuejs, -->
+            <option value="bg-warning">bg-warning</option>
+            <option value="bg-success">bg-success</option>
+            <option value="bg-info">bg-info</option>
+            <option value="bg-dark">bg-dark</option>
+            <option value="bg-primary">bg-primary</option>
+            <option value="bg-danger">bg-danger</option>
+            <option value="bg-secondary">bg-secondary</option>
+            <option value="bg-white">bg-white</option>
+        </select>
+
+
+        <!-- 
+            Dentro de las clases podemos colocar condiciones, de acuerdo a un valor, en este caso se tiene una variable
+            color en la data, donde su valor es boleano, dentro de la clase se especifica en un objeto que valor va tener de acuerdo a ese valor de boleano, si es true tendra  un fondo y si es false otro valor
+         -->
+        <div class="text-white p-3" :class="{'bg-info':color, 'bg-success': !color}">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius repellat non rem eos commodi, reiciendis corporis similique recusandae saepe dolorum, repudiandae soluta.
+        </div>
+        <!-- 
+            Para hacer dinamico el ejercicio, se especifica se asigna a un evento de click que cambie el 
+            valor de la data y este automaticamente interactue en la vista
+         -->
+        <button class="btn btn-primary" @click="color=!color">Cambiar</button>
+
+
+
+
+    </div>
+
+    <script src='js/vue.js'></script>
+    <script src='js/03.js'></script>
+</body>
+
+</html>

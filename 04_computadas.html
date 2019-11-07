@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>Propiedades Computadas</title>
+</head>
+
+<body>
+    <!-- 
+        Los metodos de computed son aquellos que tienen lógica, y siempre retornan algo a compración de los metodos
+        Las propiedades computadas tienen una gran ventaja que se almacenan en la cache del navegador 
+        por lo que si tienen calculos muy pesados, estos pueden  ayudar mucho y no relentizar la pagina 
+        cuando se realicen.
+        Para llamar las propiedades computadas no se necesita colocar los parentesis, solmente el nombre
+     -->
+
+    <div id="app" class="container mt-5">
+        <h3>{{mensaje}}</h3>
+        <h2>{{invertido}}</h2>
+        <!-- 
+            Mediante el v-model enlazamos la data de mensaje y podemos hacer dinamico todo
+         -->
+        <input type="text" class="form-control" v-model="mensaje">
+        <hr>
+        <button class="btn btn-primary" @click="contador++">+</button>
+        <button class="btn btn-danger" @click="contador--">-</button>
+        <h3>{{contador}}</h3>
+        <!-- 
+            Para que nuestra barra tenga los colores dinamicos se realiza lo siguiente:
+            - Modificamos el style a un atributo dinamico con los :, luego el estilo lo convertimos en un objeto
+            mediante las dos llaves, el valor que tiene en porcentaje lo hacemos dinamico con el  contador de la data 
+            - Luego adicionamos una clase dinamica en donde le vamos pasar un dato de nuestra data, para este caso se llamara fondo con un valor predeterminado de primary
+            - Dentro de las propiedades computadas se crea una llamada color, la cual retornara en un objeto los 
+            colores preestablecidos
+
+
+         -->
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" 
+                :style="{width: contador+'%'}" aria-valuenow="25" aria-valuemin="0"
+                :class="color"
+                aria-valuemax="100">{{contador}}</div>
+        </div>
+    </div>
+
+
+    <script src='js/vue.js'></script>
+    <script src='js/04.js'></script>
+</body>
+
+</html>
